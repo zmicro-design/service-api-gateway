@@ -1,0 +1,13 @@
+services:
+  api-gateway:
+    restart: always
+    image: whatwewant/api-gateway:${SERVICE_API-GATEWAY_IMAGE_VERSION}
+    environment:
+      PORT: $SERVICE_API-GATEWAY_PORT
+      USERNAME: ${SERVICE_API-GATEWAY_USERNAME}
+      PASSWORD: ${SERVICE_API-GATEWAY_PASSWORD}
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress

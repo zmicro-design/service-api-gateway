@@ -1,0 +1,15 @@
+services:
+  api-gateway:
+    restart: always
+    image: whatwewant/api-gateway:${SERVICE_API_GATEWAY_IMAGE_VERSION}
+    # ports:
+    #   - 0.0.0.0:${SERVICE_API_GATEWAY_PORT}:${SERVICE_API_GATEWAY_PORT}
+    environment:
+      PORT: ${SERVICE_API_GATEWAY_PORT}
+    volumes:
+      - ${SERVICE_CONFIGS}:/etc/api-gateway
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress
